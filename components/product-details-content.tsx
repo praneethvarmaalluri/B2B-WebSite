@@ -46,7 +46,10 @@ export function ProductDetailsContent({ product }: { product: Product }) {
       quantity,
       size: selectedSize || undefined,
       color: selectedColor || undefined,
-      category: product.category
+      category:
+      typeof product.category === "string"
+    ? product.category
+    : product.category?.name || "",
     });
 
     toast.success("Added to cart");
